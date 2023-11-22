@@ -4,9 +4,18 @@ import requests
 
 import json
 
+from dotenv import load_dotenv
+
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+
+
 app = Flask(__name__)
 
-TMDB_API_KEY = '0193306eaadc1482a10288828e2ccec7'
+TMDB_API_KEY = os.getenv("API_KEY")
 
 # Sample data
 

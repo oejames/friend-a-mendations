@@ -1,14 +1,10 @@
 from flask import Flask, render_template, request, jsonify
-
 import requests
-
 import json
-
 from dotenv import load_dotenv
-
 import os
 
-# Load environment variables from .env file
+# environment variables
 load_dotenv()
 
 
@@ -18,7 +14,7 @@ app = Flask(__name__)
 
 TMDB_API_KEY = os.getenv("API_KEY")
 
-# Sample data
+
 
 try:
     with open('library.json', 'r') as f:
@@ -27,25 +23,12 @@ except FileNotFoundError:
     library = {}
 
 
-# library = {
-#     'cheer_up': [
-#         {'title': '27 Dresses', 'person': 'Alice', 'perfect_for': 'When you need a pick-me-up', 'reasoning': "It's kind of perfect for when you need to be cheered up "},
-#         {'title': 'Feel-Good Suggestion 2', 'person': 'Bob', 'perfect_for': 'Anytime', 'reasoning': 'It always brings a smile to my face.'},
-#         # Add more recommendations as needed
-#     ],
-#     'celebrate': [
-#         {'title': 'Celebration Choice 1', 'person': 'Charlie', 'perfect_for': 'Special occasions', 'reasoning': 'Great for celebrating achievements.'},
-#         # Add more recommendations as needed
-#     ],
-# }
-
 filters = {
-    'cheer_up': 'When You Need Cheering Up',
-    'laugh': 'When You Need to Laugh',
+    'cheer_up': 'When You Need To Cheer Up',
+    'laugh': 'When You Need To Laugh',
     'fall_in_love': 'When You Want To Fall In Love',
     'sad': 'When You Need To Cry'
 
-    # Add more categories as needed
 }
 
 @app.route('/')
@@ -62,7 +45,7 @@ def get_recommendation():
     selected_recommendations = library[selected_type]
 
     # Get a random recommendation
-    random_recommendation = selected_recommendations[0]  # For simplicity, we'll just pick the first recommendation
+    random_recommendation = selected_recommendations[0]  # right now just picks the first recommendation
 
     return render_template('recommendation.html', recommendation=random_recommendation)
 
@@ -73,15 +56,15 @@ def get_recommendation():
 def get_movie_details():
     movie_title = request.form.get('movie_title')
 
-    # Make a request to TMDb API to get movie details
+    # request to TMDb API to get movie details
     tmdb_url = f'https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={movie_title}'
     
     try:
         response = requests.get(tmdb_url)
-        response.raise_for_status()  # Check for errors in the response
+        response.raise_for_status()  # checking for errors in the response
         data = response.json()
 
-        # Extract relevant movie details
+        # extract relevant movie details
         if data['results']:
             movie_details = [
                 {
@@ -110,7 +93,6 @@ def get_library():
 
     selected_recommendations = library[selected_type]
 
-    # Render the library HTML with friend-a-mendations
     library_html = render_template('library.html', filters=filters, recommendations=library)
     return jsonify({'library_html': library_html})
 
@@ -123,12 +105,12 @@ def add_recommendation():
     recommendation = request.form.get('recommendation')
     initials = request.form.get('initials')
 
-    # Make a request to TMDb API to get movie details
+    # make request to TMDb API to get movie details
     tmdb_url = f'https://api.themoviedb.org/3/search/movie?api_key={TMDB_API_KEY}&query={movie_title}'
     response = requests.get(tmdb_url)
     data = response.json()
 
-    # Extract relevant movie details
+    # extract relevant movie details
     if data['results']:
         movie_details = {
             'title': data['results'][0]['title'],
@@ -137,7 +119,7 @@ def add_recommendation():
     else:
         movie_details = None
 
-    if category in filters:  # Check if the category is one of the pre-made categories
+    if category in filters:  # check if the category is one of the pre-made categories
         if category in library:
             library[category].append({
                 'title': movie_title,
@@ -154,13 +136,13 @@ def add_recommendation():
                 'reasoning': recommendation,
                 'image_url': movie_details['image_url'] if movie_details else None  # Include the image URL
             }]
-        # Save the updated library to a file
+        # save the updated library to a file
         with open('library.json', 'w') as f:
             json.dump(library, f)
         return "Recommendation added successfully"
     elif category.lower() == 'other/new':  # Allow users to type in a new category
-        # Add logic to handle adding a new category
-        # You can prompt the user to enter a new category and add it to the filters
+        # add logic to handle adding a new category
+        # (can prompt the user to enter a new category and add it to the filters)
         return "New category added successfully"
     else:
         return "Invalid category"

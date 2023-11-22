@@ -1,5 +1,6 @@
 body {
-    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    font-family: 'IBM Plex Sans', sans-serif;
     background-color: #f8f1f1; /* Light pastel background */
     margin: 0;
     padding: 0;
@@ -59,28 +60,29 @@ button {
 button:hover {
     background-color: #45a049;
 }
-/* Add or update these styles in your style.css */
+
 
 .library {
     display: flex;
-    flex-direction: column; /* Display categories in a column */
+    flex-direction: column; 
 }
 
 .category {
-    margin-bottom: 20px; /* Add space between categories */
+    margin-bottom: 20px; /*  space between categories */
 }
 
 .library-section {
     display: flex;
-    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+    overflow-x: auto; 
 }
 
 .friend-a-mendation {
     width: 200px;
     height: 300px;
-    background-color: #8e44ad; /* Purple color, adjust as needed */
+    background-color: 	#4B0082; 
     border-radius: 8px;
     margin-right: 10px;
+    margin-bottom: 5px;
     cursor: pointer;
     perspective: 1000px;
 }
@@ -111,12 +113,12 @@ button:hover {
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     /* align-items: center; */
     color: white;
     font-size: 18px;
     /* text-align: center; */
-    backface-visibility: hidden; /* Ensure back side is not visible until flipped */
+    backface-visibility: hidden; /* back side is not visible until flipped */
 }
 
 .friend-a-mendation .card .img {
@@ -129,11 +131,12 @@ button:hover {
     overflow-y: auto;
 }
 
-.back p {
+.front p {
     margin: 20px;
+    margin-top: 30px;
     align-items: left;
     font-size: 15px;
-    overflow-y: auto;
+    /* overflow-y: auto; */
 }
 
 
@@ -177,7 +180,6 @@ button:hover {
 
 
 
-/* Add or update these styles in your style.css */
 
 .form-group {
     margin-bottom: 15px;
@@ -248,34 +250,34 @@ button:hover {
     aspect-ratio: .67;
 }
 
-/* Add this to your CSS */
+
 #movie-results {
-    white-space: nowrap; /* Prevent results from wrapping to the next line */
-    overflow-x: auto; /* Enable horizontal scrolling if results overflow */
+    white-space: nowrap; /* prevent movie results from wrapping to the next line */
+    overflow-x: auto; 
     margin-bottom: 20px;
 }
 
 .movie-result {
     display: inline-block;
-    margin-right: 10px; /* Adjust the margin as needed */
+    margin-right: 10px; /
 }
 
 /* Customize scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
-    width: 1px; /* Adjust the width as needed */
+    width: 1px;
     margin-bottom: 10px;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background-color: #6c5b7b; /* Purple color, adjust as needed */
-    border-radius: 10px; /* Adjust the border-radius as needed */
+    background-color: #6c5b7b; 
+    border-radius: 10px; 
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-    background-color: #f8f1f1; /* Light pastel background */
-    border-radius: 10px; /* Adjust the border-radius as needed */
+    background-color: #f8f1f1;
+    border-radius: 10px;
 }
 
 

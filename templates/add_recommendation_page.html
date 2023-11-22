@@ -12,11 +12,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Add Friend-a-mendation</title>
 </head>
 <body>
     <div class="container">
-        <h1>Add Your Friend-a-mendation</h1>
+        <h1>Add Your Recommendation</h1>
         <form id="recommendation-form">
             <div class="form-group">
                 <label for="movie-title">Movie Title:</label>
@@ -32,7 +35,7 @@
                     {% for key, value in filters.items() %}
                         <option value="{{ key }}">{{ value }}</option>
                     {% endfor %}
-                    <option value="other/new">Other (Enter your own category)</option>
+                    <!-- <option value="other/new">Other (Enter your own category)</option> -->
                 </select>
             </div>
 

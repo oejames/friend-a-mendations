@@ -8,14 +8,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300&display=swap" rel="stylesheet">
     <title>Friend-a-mendations</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Welcome to Friend-a-Mendations</h1>
+    <div class="container" style="align-items: center;">
+        <div class="heading-container"><h1>Welcome to Friend-a-Mendations</h1>
+        <!-- <p>Movie recommendations you'd give to a friend.</p> -->
+    </div>
 
         <div class="add-recommendation">
-            <a href="{{ url_for('add_recommendation_page') }}" class="add-button">Add to Friend-a-mendations</a>
+            <a href="{{ url_for('add_recommendation_page') }}" class="add-button">Add a Friend-a-Mendation</a>
         </div>
         
         

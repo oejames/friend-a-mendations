@@ -1,0 +1,143 @@
+<!-- Update add_recommendation_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href='https://fonts.googleapis.com/css?family=Varela Round' rel='stylesheet'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Add Friend-a-mendation</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Your Friend-a-mendation</h1>
+        <form id="recommendation-form">
+            <div class="form-group">
+                <label for="movie-title">Movie Title:</label>
+                <input type="text" id="movie-title" name="movie_title" class="full-width" required>
+                <button type="button" onclick="searchMovie()">Search</button>
+            </div>
+            <div id="movie-results"></div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <select id="category" name="category" class="full-width" required>
+                    <option value="" disabled selected>Select a category</option>
+                    {% for key, value in filters.items() %}
+                        <option value="{{ key }}">{{ value }}</option>
+                    {% endfor %}
+                    <option value="other/new">Other (Enter your own category)</option>
+                </select>
+            </div>
+
+            <div class="form-group new">
+                <label for="initials">Your Initials:</label>
+                <textarea id="initials" name="initials" class="full-width" required></textarea>
+            </div>
+
+            <div class="form-group newer">
+                <label for="recommendation">Perfect for when:</label>
+                <textarea id="recommendation" name="recommendation" class="full-width" rows="4" required></textarea>
+            </div>
+
+
+            <button type="button" onclick="addRecommendation()" style="margin-left: 40%;">Add Friend-a-mendation</button>
+        </form>
+        <button onclick="returnHome()" style="margin-top: 20%;">Return Home</button>
+    </div>
+
+    <script>
+        function returnHome() {
+            window.location.href = '/';
+        }
+
+        function searchMovie() {
+            var movieTitle = document.getElementById('movie-title').value;
+
+            fetch('/get_movie_details', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'movie_title=' + movieTitle,
+            })
+            .then(response => response.json())
+            .then(data => {
+                var movieResults = document.getElementById('movie-results');
+
+                if (data.movie_details && data.movie_details.length > 0) {
+                    var movieDetailsHTML = '';
+
+                    // Exclude items with the image URL "https://image.tmdb.org/t/p/w500/None"
+                    var moviesWithValidImages = data.movie_details.filter(movie => movie.image_url && movie.image_url !== "https://image.tmdb.org/t/p/w500/None");
+
+                    // Display all relevant search results
+                    moviesWithValidImages.forEach(movie => {
+                        movieDetailsHTML += `
+                            <div class="movie-result">
+                                <p><strong>Title:</strong> ${movie.title}</p>
+                                <input type="checkbox" name="selected_movies[]" value="${movie.title}">
+                                <img src="${movie.image_url}" alt="${movie.title}">
+                            </div>
+                        `;
+                    });
+
+                    if (moviesWithValidImages.length === 0) {
+                        movieResults.innerHTML = '<p>No movies with valid images found.</p>';
+                    } else {
+                        movieResults.innerHTML = movieDetailsHTML;
+                    }
+                } else {
+                    movieResults.innerHTML = '<p>No movies found.</p>';
+                }
+            });
+        }
+
+        function addRecommendation() {
+            var selectedMovies = document.querySelectorAll('input[name="selected_movies[]"]:checked');
+            if (!selectedMovies.length) {
+                alert('Please select at least one movie from the search results.');
+                return;
+            }
+
+            // Retrieve initials from the form
+            var initials = document.getElementById('initials').value;
+
+            // Loop through selected movies
+            selectedMovies.forEach(function(checkbox) {
+                var movieTitle = checkbox.value;
+                var category = document.getElementById('category').value;
+                var recommendation = document.getElementById('recommendation').value;
+
+                // Add confirmation for movie selection
+                if (confirm(`Are you sure you want to add "${movieTitle}" to the library?`)) {
+                    fetch('/add_recommendation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body: `movie_title=${movieTitle}&category=${category}&recommendation=${recommendation}&initials=${initials}`,
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            alert('Recommendation added!');
+                            returnHome();  // Redirect to the home page after adding the recommendation
+                        } else {
+                            alert('Failed to add recommendation');
+                        }
+                    });
+                }
+            });
+}
+
+    </script>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

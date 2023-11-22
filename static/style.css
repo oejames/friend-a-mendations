@@ -1,0 +1,295 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f1f1; /* Light pastel background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Your existing styles remain unchanged */
+
+/* Add or update these styles in your style.css */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+}
+
+/* Adjust the width of the label and input to your preference */
+.form-group label {
+    width: 150px; /* Adjust as needed */
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    flex: 1; /* Take up remaining space */
+    margin-left: 10px; /* Adjust as needed for spacing between label and input */
+    margin-right: 10px; 
+}
+
+/* Add this to your CSS */
+.full-width {
+    width: 100%;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.filter-section {
+    margin-bottom: 20px;
+    visibility: hidden;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+/* Add or update these styles in your style.css */
+
+.library {
+    display: flex;
+    flex-direction: column; /* Display categories in a column */
+}
+
+.category {
+    margin-bottom: 20px; /* Add space between categories */
+}
+
+.library-section {
+    display: flex;
+    overflow-x: auto; /* Allow horizontal scrolling if necessary */
+}
+
+.friend-a-mendation {
+    width: 200px;
+    height: 300px;
+    background-color: #8e44ad; /* Purple color, adjust as needed */
+    border-radius: 8px;
+    margin-right: 10px;
+    cursor: pointer;
+    perspective: 1000px;
+}
+
+.library-section {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(4, 200px);
+    grid-gap: 10px;
+    /* overflow-y:hidden; */
+  }
+  
+.card {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.friend-a-mendation:hover .card {
+    transform: rotateY(180deg);
+}
+
+.front,
+.back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+    color: white;
+    font-size: 18px;
+    /* text-align: center; */
+    backface-visibility: hidden; /* Ensure back side is not visible until flipped */
+}
+
+.friend-a-mendation .card .img {
+    height: 100px;
+}
+
+.back {
+    transform: rotateY(180deg);
+    /* display: none; Initially hide the back side */
+    overflow-y: auto;
+}
+
+.back p {
+    margin: 20px;
+    align-items: left;
+    font-size: 15px;
+    overflow-y: auto;
+}
+
+
+
+
+.add-recommendation {
+    margin-top: 20px;
+}
+
+.add-recommendation h2 {
+    margin-bottom: 10px;
+}
+
+.add-recommendation-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-recommendation-container label,
+.add-recommendation-container textarea,
+.add-recommendation-container input {
+    margin-bottom: 10px;
+}
+
+.add-recommendation-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-recommendation-container button:hover {
+    background-color: #45a049;
+}
+
+
+
+
+
+/* Add or update these styles in your style.css */
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.add-recommendation {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.add-recommendation h2 {
+    margin-bottom: 10px;
+}
+
+#show-form-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#show-form-btn:hover {
+    background-color: #45a049;
+}
+
+#recommendation-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none;
+}
+
+#recommendation-form-container label,
+#recommendation-form-container textarea,
+#recommendation-form-container input {
+    margin-bottom: 10px;
+}
+
+#recommendation-form-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#recommendation-form-container button:hover {
+    background-color: #45a049;
+}
+
+#movie-details img {
+    max-width: 100%;
+    height: auto;
+}
+
+
+#movie-results img {
+    width: 100px;
+    height: auto;
+    aspect-ratio: .67;
+}
+
+/* Add this to your CSS */
+#movie-results {
+    white-space: nowrap; /* Prevent results from wrapping to the next line */
+    overflow-x: auto; /* Enable horizontal scrolling if results overflow */
+    margin-bottom: 20px;
+}
+
+.movie-result {
+    display: inline-block;
+    margin-right: 10px; /* Adjust the margin as needed */
+}
+
+/* Customize scrollbar for Webkit browsers */
+::-webkit-scrollbar {
+    width: 1px; /* Adjust the width as needed */
+    margin-bottom: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: #6c5b7b; /* Purple color, adjust as needed */
+    border-radius: 10px; /* Adjust the border-radius as needed */
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: #f8f1f1; /* Light pastel background */
+    border-radius: 10px; /* Adjust the border-radius as needed */
+}
+
+
+
+.newer textarea {
+    word-wrap: break-word; /* Allow word wrapping within the textarea */
+}
+
+
+
+
+
+
+
+
+
+

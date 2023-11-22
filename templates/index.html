@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <title>Friend-a-mendations</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to Friend-a-Mendations</h1>
+
+        <div class="add-recommendation">
+            <a href="{{ url_for('add_recommendation_page') }}" class="add-button">Add to Friend-a-mendations</a>
+        </div>
+        
+        
+         
+
+            <!-- <button id="random-btn">Get Random Friend-a-mendation</button> -->
+        <!-- </div> -->
+
+        <div id="library-section">
+            <!-- Friend-a-mendation library will be displayed here -->
+        </div>
+
+        <div class="filter-section">
+            <!-- <label for="type">Select type:</label> -->
+            <select name="type" id="type">
+                {% for key, value in filters.items() %}
+                    <option value="{{ key }}">{{ value }}</option>
+                {% endfor %}
+            </select> 
+    </div>
+
+
+
+
+
+<script>
+    function toggleForm() {
+        var formContainer = document.getElementById('recommendation-form-container');
+        formContainer.classList.toggle('hidden');
+    }
+
+
+
+    function searchMovie() {
+        var movieTitle = document.getElementById('movie-title').value;
+
+        fetch('/get_movie_details', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: 'movie_title=' + movieTitle,
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.movie_details) {
+                var movieDetails = data.movie_details;
+                var movieDetailsHTML = `
+                    <p><strong>Title:</strong> ${movieDetails.title}</p>
+                    <img src="${movieDetails.image_url}" alt="${movieDetails.title}">
+                `;
+                document.getElementById('movie-details').innerHTML = movieDetailsHTML;
+            } else {
+                document.getElementById('movie-details').innerHTML = '<p>No movie found.</p>';
+            }
+        });
+    }
+
+//     function addRecommendation() {
+//     var movieTitle = document.getElementById('movie-title').value;
+//     var category = document.getElementById('category').value;
+//     var recommendation = document.getElementById('recommendation').value;
+
+//     // Add confirmation for movie selection
+//     if (confirm(`Are you sure you want to add "${movieTitle}" to the library?`)) {
+//         fetch('/add_recommendation', {
+//             method: 'POST',
+//             headers: {
+//                 'Content-Type': 'application/x-www-form-urlencoded',
+//             },
+//             body: `movie_title=${movieTitle}&category=${category}&recommendation=${recommendation}`,
+//         })
+//         .then(response => {
+//             if (response.ok) {
+//                 alert('Recommendation added!');
+//                 // Update the library section to display the new recommendations
+//                 fetchLibrary();
+//             } else {
+//                 alert('Failed to add recommendation');
+//             }
+//         });
+//     }
+// }
+
+function redirectToAddPage() {
+            window.location.href = '/add_recommendation';
+        }
+
+        
+</script>
+
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

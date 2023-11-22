@@ -1,0 +1,26 @@
+<div class="library">
+    {% for key, value in filters.items() %}
+        <div class="category">
+            <h2>{{ value }}</h2>
+            <div class="library-section" id="{{ key }}-library-section">
+                {% for recommendation in recommendations[key] %}
+                    <div class="friend-a-mendation">
+                        <div class="card">
+                            <div class="front">
+                                <!-- <div class="front" style="background-image: url('{{ recommendation.image_url }}'); width: 200px;"> -->
+                            
+                                <!-- <h3>{{ recommendation.title }}</h3> -->
+                                <img src="{{ recommendation.image_url }}" alt="{{ recommendation.title }}" style="width: 200px; height: 300px;" >  
+                            </div>
+                            <div class="back">
+                                <p><strong>From:</strong> {{ recommendation.person }}</p>
+                                <!-- <p><strong>Perfect for:</strong> {{ recommendation.perfect_for }}</p> -->
+                                <p><strong>Perfect for:</strong> {{ recommendation.reasoning }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+</div>

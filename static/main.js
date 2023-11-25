@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to fetch and update the library
+    // fetch and update the library
     function updateLibrary(selectedFilter) {
         fetch('/get_library', {
             method: 'POST',
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Get the initial library on page load
     updateLibrary(document.getElementById('type').value);
 
-    // Event listener for the "Get Random Friend-a-mendation" button
+    // "Get Random Friend-a-mendation" button
     document.getElementById('random-btn').addEventListener('click', function() {
         var selectedFilter = document.getElementById('type').value;
         fetch('/get_recommendation', {
@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Event listener for the library type dropdown
+    // library type dropdown
     document.getElementById('type').addEventListener('change', function() {
         var selectedFilter = this.value;
         updateLibrary(selectedFilter);
@@ -75,7 +75,7 @@ function fetchLibrary() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Function to fetch and update the library
+    // fetch and update the library
     function updateLibrary(selectedFilter) {
         fetch('/get_library', {
             method: 'POST',
@@ -160,15 +160,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Event listener for the library type dropdown
+    // library type dropdown
     document.getElementById('type').addEventListener('change', function() {
         var selectedFilter = this.value;
         updateLibrary(selectedFilter);
     });
 
-    // ... (rest of your script)
+ 
 
-    // Add this function to handle scrolling
+    // handle scrolling
     function scrollLibrary(direction) {
         var librarySection = document.getElementById('library-section');
         librarySection.scrollLeft += direction * librarySection.clientWidth;

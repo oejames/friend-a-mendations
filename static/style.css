@@ -1,34 +1,32 @@
 body {
     /* font-family: 'Poppins', sans-serif; */
     font-family: 'IBM Plex Sans', sans-serif;
-    background-color: #f8f1f1; /* Light pastel background */
+    background-color: #f8f1f1; 
     margin: 0;
     padding: 0;
 }
 
-/* Your existing styles remain unchanged */
-
-/* Add or update these styles in your style.css */
+/* add movie form */
 .form-group {
     margin-bottom: 15px;
     display: flex;
     flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
 }
 
-/* Adjust the width of the label and input to your preference */
+
 .form-group label {
-    width: 150px; /* Adjust as needed */
+    width: 150px; 
 }
 
 .form-group input,
 .form-group textarea,
 .form-group select {
-    flex: 1; /* Take up remaining space */
-    margin-left: 10px; /* Adjust as needed for spacing between label and input */
+    flex: 1; 
+    margin-left: 10px; 
     margin-right: 10px; 
 }
 
-/* Add this to your CSS */
+
 .full-width {
     width: 100%;
 }
@@ -68,7 +66,7 @@ button:hover {
 }
 
 .category {
-    margin-bottom: 20px; /*  space between categories */
+    margin-bottom: 20px; 
 }
 
 .library-section {
@@ -262,7 +260,7 @@ button:hover {
     margin-right: 10px; /
 }
 
-/* Customize scrollbar for Webkit browsers */
+
 ::-webkit-scrollbar {
     width: 1px;
     margin-bottom: 10px;
@@ -274,7 +272,7 @@ button:hover {
     border-radius: 10px; 
 }
 
-/* Track */
+
 ::-webkit-scrollbar-track {
     background-color: #f8f1f1;
     border-radius: 10px;
@@ -283,7 +281,7 @@ button:hover {
 
 
 .newer textarea {
-    word-wrap: break-word; /* Allow word wrapping within the textarea */
+    word-wrap: break-word; /* word wrapping within the textarea */
 }
 
 

@@ -1,16 +1,31 @@
 body {
     /* font-family: 'Poppins', sans-serif; */
-    font-family: 'IBM Plex Sans', sans-serif;
+    /* font-family: 'IBM Plex Sans', sans-serif; */
+    /* font-family: 'TiemposHeadline-Bold'; */
+    font-family: 'Inter light', sans-serif;
     background-color: #f8f1f1; 
+    color: #fff;
     margin: 0;
     padding: 0;
+    
+}
+
+body a {
+    color: gray
+}
+
+.heading-container {
+    text-align: center;
+    color: #fff;
+    font-family: 'TiemposHeadline-Bold';
+
 }
 
 /* add movie form */
 .form-group {
     margin-bottom: 15px;
     display: flex;
-    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    flex-wrap: wrap; 
 }
 
 
@@ -36,7 +51,7 @@ body {
     max-width: 800px;
     margin: 50px auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #000;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -74,12 +89,14 @@ button:hover {
     overflow-x: auto; 
 }
 
+
+
 .friend-a-mendation {
     width: 200px;
     height: 300px;
-    background-color: 	#4B0082; 
+    background-color: 	#282c34; 
     border-radius: 8px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     margin-bottom: 5px;
     cursor: pointer;
     perspective: 1000px;
@@ -121,6 +138,7 @@ button:hover {
 
 .friend-a-mendation .card .img {
     height: 100px;
+    border-radius: 8px;
 }
 
 .back {
@@ -264,18 +282,21 @@ button:hover {
 ::-webkit-scrollbar {
     width: 1px;
     margin-bottom: 10px;
+    visibility: hidden;
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background-color: #6c5b7b; 
     border-radius: 10px; 
+    visibility: hidden;
 }
 
 
 ::-webkit-scrollbar-track {
     background-color: #f8f1f1;
     border-radius: 10px;
+    visibility: hidden;
 }
 
 

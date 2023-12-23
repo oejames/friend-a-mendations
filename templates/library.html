@@ -1,7 +1,7 @@
 <div class="library">
     {% for key, value in filters.items() %}
         <div class="category">
-            <h2>{{ value }}</h2>
+            <h3>{{ value }}</h3>
             <div class="library-section" id="{{ key }}-library-section">
                 {% for recommendation in recommendations[key] %}
                     <div class="friend-a-mendation">

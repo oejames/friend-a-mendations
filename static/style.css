@@ -3,7 +3,7 @@ body {
     /* font-family: 'IBM Plex Sans', sans-serif; */
     /* font-family: 'TiemposHeadline-Bold'; */
     font-family: 'Inter light', sans-serif;
-    background-color: #f8f1f1; 
+    background-color: #282c34;
     color: #fff;
     margin: 0;
     padding: 0;
@@ -62,7 +62,7 @@ body a {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #6c5b7b;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -71,7 +71,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #6c5b7b;
 }
 
 
